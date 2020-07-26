@@ -18,7 +18,8 @@ class SignUp extends React.Component {
       confirmPassword: ''
     };
   }
-
+//handle submit function will be asynchronous function
+//prevent the default submiting, default from sumbit action
   handleSubmit = async event => {
     event.preventDefault();
 
@@ -36,7 +37,8 @@ class SignUp extends React.Component {
       );
 
       await createUserProfileDocument(user, { displayName });
-
+      
+      //when user profile document has been created ,below code this.setStet will clear our form
       this.setState({
         displayName: '',
         email: '',
@@ -49,9 +51,9 @@ class SignUp extends React.Component {
   };
 
   handleChange = event => {
-    const { name, value } = event.target;
+    const { name, value } = event.target;// destructuring name and value from the target
 
-    this.setState({ [name]: value });
+    this.setState({ [name]: value });// dynamically set name value
   };
 
   render() {
